@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escalação Tática - Fluminense Football Club</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="fluminense.png" type="image/x-icon">
+
+  <!-- Cores personalizadas da identidade do Bahia -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bahia: {
+              blue: '#002B66',
+              red: '#E30613',
+              dark: '#00193D',
+              gold: '#FFD700'
+            },
+            fluminense: {
+            grana: '#8A0027',
+            verde: '#006633',
+            white: '#FFFFFF',
+            dark: '#0B0406'
+            },
+            navy: {
+            800: '#1e293b',
+            900: '#0f172a',
+            950: '#020617'
+          },
+          gold: '#FFC72C'
+        }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilização das marcações do gramado */
+    .field-lines {
+      background-image: 
+        linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255,255,255,0.05) 50%, transparent 50%);
+      background-size: 100% 12.5%, 100% 100%;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-white min-h-screen flex flex-col">
+
+  <!-- ===== HEADER COMPLETO INTEGRADO ===== -->
+  <header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md rounded-2xl mb-6">
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+    <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm text-white shadow-lg overflow-hidden shrink-0"
+         style="background: conic-gradient(from 180deg, #8A0027 0% 33.33%, #FFFFFF 33.33% 66.66%, #006633 66.66% 100%);">
+      <img src="fluminense.png" alt="Escudo flu" class="w-10 h-10 object-contain drop-shadow p-0.5">
+    </div>
+        <div>
+          <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-gold uppercase font-semibold">Temporada 2026</p>
+          <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Montar Escalação Tática</h1>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium items-center">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+        <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
+        <a href="flu_fem.html" class="text-slate-400 hover:text-white transition-colors">Flu Fem.</a>
+        <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
+        <a href="escalacao.html" class="text-gold hover:text-white border-b-2 border-amber-400 transition-colors">Escalação</a>
+        <a href="titulos.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Glórias</a>
+        <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+      </nav>
+
+      <!-- Botões do Alternador de Esquema Tático -->
+      <div class="flex bg-bahia-dark/80 p-1.5 rounded-xl border border-white/10 gap-1">
+        <button id="btn-433" onclick="switchFormation('433')" class="px-3 sm:px-5 py-2 text-xs font-bold rounded-lg transition-all duration-200 bg-bahia-red text-white shadow-lg">
+          4-3-3
+        </button>
+        <button id="btn-4231" onclick="switchFormation('4231')" class="px-3 sm:px-5 py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-400 hover:text-white">
+          4-2-3-1
+        </button>
+      </div>
+
+      <!-- Hamburger Button (Mobile Only) -->
+      <button id="hamburgerBtn" onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <!-- O caminho do SVG é alterado dinamicamente via JS (Barras <-> X) -->
+          <path id="hamburgerPath" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex-col items-center justify-center text-center space-y-4">
+      <nav class="flex flex-col gap-4 text-base font-medium">
+        <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
+        <a href="calendario.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Calendário</a>
+        <a href=flu_fem.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Feminino</a>
+        <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
+        <a href="escalacao.html" class="text-gold hover:text-white transition-colors py-1 border-b border-white/5">Escalação</a>
+        <a href="titulos.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Glórias</a>
+        <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-6xl mx-auto w-full space-y-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- CAMPO DE JOGO -->
+      <main class="lg:col-span-8 bg-gradient-to-b from-emerald-800 via-emerald-700 to-emerald-900 border-4 border-emerald-600/80 rounded-3xl shadow-2xl overflow-visible relative aspect-[4/5] sm:aspect-[16/11] p-6 field-lines flex flex-col justify-between">
+        
+        <!-- Elementos do Gramado -->
+        <div class="absolute inset-x-0 top-1/2 h-0.5 bg-white/20 pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-white/20 rounded-full pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-20 border-b-2 border-x-2 border-white/20 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-20 border-t-2 border-x-2 border-white/20 pointer-events-none"></div>
+
+        <!-- CONTAINER DINÂMICO DA ESCALAÇÃO -->
+        <div id="tactical-field" class="relative w-full h-full z-10">
+          <!-- Renderizado via JS -->
+        </div>
+
+      </main>
+
+      <!-- PAINEL LATERAL: RESERVAS E FILTROS -->
+      <aside class="lg:col-span-4 bg-bahia-blue/80 border border-white/10 rounded-3xl p-5 shadow-xl flex flex-col justify-between gap-4 backdrop-blur-md">
+        
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold tracking-wide text-white flex items-center gap-2">
+              <span>BANCO DE RESERVAS</span>
+              <span class="text-xs bg-bahia-red px-2 py-0.5 rounded-full text-white font-normal" id="bench-count">18</span>
+            </h2>
+          </div>
+
+          <!-- FILTRO DE RESERVAS POR POSIÇÃO -->
+          <div class="grid grid-cols-5 gap-1 bg-bahia-dark/60 p-1 rounded-xl mb-4 text-[10px] font-bold text-center">
+            <button onclick="filterBench('todos')" class="bench-filter py-1.5 rounded-lg bg-bahia-red text-white transition" data-filter="todos">Todos</button>
+            <button onclick="filterBench('GK')" class="bench-filter py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-filter="GK">GOL</button>
+            <button onclick="filterBench('DEF')" class="bench-filter py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-filter="DEF">DEF</button>
+            <button onclick="filterBench('MEI')" class="bench-filter py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-filter="MEI">MEI</button>
+            <button onclick="filterBench('ATA')" class="bench-filter py-1.5 rounded-lg text-slate-400 hover:text-white transition" data-filter="ATA">ATA</button>
+          </div>
+
+          <!-- LISTA DE RESERVAS DRAGGABLE -->
+          <div id="bench-list" class="grid grid-cols-2 gap-2 max-h-[420px] overflow-y-auto pr-1">
+            <!-- Renderizado via JS -->
+          </div>
+        </div>
+
+        <div class="p-3 bg-bahia-dark/50 rounded-xl border border-white/5 text-[11px] text-slate-400 flex items-center gap-2">
+          <span class="text-lg">💡</span>
+          <span><strong>Dica:</strong> Arraste um reserva para cima de um titular no campo para realizar a substituição.</span>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ===== FOOTER COMPLETO INTEGRADO ===== -->
+  <footer class="text-center py-6 text-xs text-slate-500 border-t border-navy-900 mt-16">
+    Fluminense FC &copy; 2026 — Escalações Oficiais
+  </footer>
+
+  <script>
+    // ELENCO COMPLETO E ESTRUTURADO DO FLUMINENSE 2026
+const playersData = {
+  // TITULARES
+  fabio: { name: 'Fábio', num: 1, pos: 'GK', cat: 'GK', role: 'Goleiro Principal' },
+  arana: { name: 'Guilherme Arana', num: 13, pos: 'LB', cat: 'DEF', role: 'Lateral Esquerdo' },
+  thiagosilva: { name: 'Thiago Silva', num: 3, pos: 'CB', cat: 'DEF', role: 'Zagueiro Central / Capitão' },
+  freytes: { name: 'Juan Pablo Freytes', num: 22, pos: 'CB', cat: 'DEF', role: 'Zagueiro' },
+  guga: { name: 'Guga', num: 23, pos: 'RB', cat: 'DEF', role: 'Lateral Direito' },
+  martinelli: { name: 'Martinelli', num: 8, pos: 'CDM', cat: 'MEI', role: 'Primeiro Volante' },
+  hercules: { name: 'Hércules', num: 35, pos: 'CM', cat: 'MEI', role: 'Meia Central' },
+  acosta: { name: 'Luciano Acosta', num: 32, pos: 'CAM', cat: 'MEI', role: 'Meia Armador' },
+  soteldo: { name: 'Yeferson Soteldo', num: 30, pos: 'LW', cat: 'ATA', role: 'Ponta Esquerda' },
+  canobbio: { name: 'Agustín Canobbio', num: 17, pos: 'RW', cat: 'ATA', role: 'Ponta Direita' },
+  johnkennedy: { name: 'John Kennedy', num: 9, pos: 'ST', cat: 'ATA', role: 'Centroavante' },
+
+  // RESERVAS
+  vitoreudes: { name: 'Vitor Eudes', num: 98, pos: 'GK', cat: 'GK', role: 'Goleiro' },
+  pitaluga: { name: 'Marcelo Pitaluga', num: 27, pos: 'GK', cat: 'GK', role: 'Goleiro' },
+  rene: { name: 'Renê', num: 6, pos: 'LB', cat: 'DEF', role: 'Lateral Esquerdo' },
+  leojance: { name: 'Léo Jance', num: 0, pos: 'LB', cat: 'DEF', role: 'Lateral Esquerdo' },
+  samuelxavier: { name: 'Samuel Xavier', num: 2, pos: 'RB', cat: 'DEF', role: 'Lateral Direito' },
+  jhonny: { name: 'Jhonny', num: 0, pos: 'RB', cat: 'DEF', role: 'Lateral Direito' },
+  fidelis: { name: 'Julio Fidelis', num: 46, pos: 'RB', cat: 'DEF', role: 'Lateral Direito' },
+  millan: { name: 'Julián Millán', num: 29, pos: 'CB', cat: 'DEF', role: 'Zagueiro' },
+  jemmes: { name: 'Jemmes', num: 44, pos: 'CB', cat: 'DEF', role: 'Zagueiro' },
+  ignacio: { name: 'Ignácio', num: 4, pos: 'CB', cat: 'DEF', role: 'Zagueiro' },
+  igorrabello: { name: 'Igor Rabello', num: 21, pos: 'CB', cat: 'DEF', role: 'Zagueiro' },
+  otavio: { name: 'Otávio', num: 94, pos: 'CDM', cat: 'MEI', role: 'Volante Recuado' },
+  luisfernando: { name: 'Luis Fernando', num: 0, pos: 'CDM', cat: 'MEI', role: 'Volante' },
+  nonato: { name: 'Nonato', num: 16, pos: 'CM', cat: 'MEI', role: 'Meia Central' },
+  alisson: { name: 'Alisson', num: 25, pos: 'CM', cat: 'MEI', role: 'Meia Central' },
+  savarino: { name: 'Jefferson Savarino', num: 11, pos: 'CAM', cat: 'MEI', role: 'Meia Ofensivo' },
+  ganso: { name: 'Ganso', num: 10, pos: 'CAM', cat: 'MEI', role: 'Meia Armador' },
+  yagoferreira: { name: 'Yago Ferreira', num: 0, pos: 'CAM', cat: 'MEI', role: 'Meia Ofensivo' },
+  matheusreis: { name: 'Matheus Reis', num: 15, pos: 'LW', cat: 'ATA', role: 'Ponta Esquerda' },
+  riquelme: { name: 'Riquelme', num: 28, pos: 'RW', cat: 'ATA', role: 'Ponta Direita' },
+  serna: { name: 'Kevin Serna', num: 90, pos: 'RW', cat: 'ATA', role: 'Ponta Direita' },
+  castillo: { name: 'Rodrigo Castillo', num: 19, pos: 'ST', cat: 'ATA', role: 'Centroavante' },
+  hulk: { name: 'Hulk', num: 7, pos: 'ST', cat: 'ATA', role: 'Atacante' },
+  cano: { name: 'Germán Cano', num: 14, pos: 'ST', cat: 'ATA', role: 'Centroavante Finalizador' }
+};
+
+// ESTRUTURA DAS FORMAÇÕES COM POSICIONAMENTO PERCENTUAL
+const formations = {
+  '433': [
+    { id: 'fabio', top: '88%', left: '50%' },
+    { id: 'arana', top: '72%', left: '15%' },
+    { id: 'thiagosilva', top: '78%', left: '38%' },
+    { id: 'freytes', top: '78%', left: '62%' },
+    { id: 'guga', top: '72%', left: '85%' },
+    { id: 'martinelli', top: '52%', left: '50%' },
+    { id: 'hercules', top: '45%', left: '32%' },
+    { id: 'acosta', top: '45%', left: '68%' },
+    { id: 'soteldo', top: '23%', left: '18%' },
+    { id: 'johnkennedy', top: '20%', left: '50%' },
+    { id: 'canobbio', top: '23%', left: '82%' }
+  ],
+  '4231': [
+    { id: 'fabio', top: '88%', left: '50%' },
+    { id: 'arana', top: '74%', left: '15%' },
+    { id: 'thiagosilva', top: '79%', left: '38%' },
+    { id: 'freytes', top: '79%', left: '62%' },
+    { id: 'guga', top: '74%', left: '85%' },
+    { id: 'martinelli', top: '56%', left: '35%' },
+    { id: 'hercules', top: '56%', left: '65%' },
+    { id: 'soteldo', top: '35%', left: '20%' },
+    { id: 'acosta', top: '33%', left: '50%' },
+    { id: 'canobbio', top: '35%', left: '80%' },
+    { id: 'johnkennedy', top: '15%', left: '50%' }
+  ]
+};
+
+let currentFormation = '433';
+
+let benchPlayers = [
+  'vitoreudes', 'pitaluga', 'rene', 'leojance', 'samuelxavier', 'jhonny', 'fidelis',
+  'millan', 'jemmes', 'ignacio', 'igorrabello', 'otavio', 'luisfernando', 'nonato',
+  'alisson', 'savarino', 'ganso', 'yagoferreira', 'matheusreis', 'riquelme', 'serna',
+  'castillo', 'hulk', 'cano'
+];
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) {
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('flex');
+  }
+}
+    let currentFilter = 'todos';
+
+    // FUNÇÃO DO MENU HAMBÚRGUER COM ALTERNÂNCIA PARA "X"
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      const path = document.getElementById('hamburgerPath');
+      
+      if (!menu || !path) return;
+
+      const isHidden = menu.classList.contains('hidden');
+
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        menu.classList.add('flex');
+        
+        if (icon) icon.classList.add('rotate-90');
+        path.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      } else {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+        
+        if (icon) icon.classList.remove('rotate-90');
+        path.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      }
+    }
+
+    function renderField() {
+      const container = document.getElementById('tactical-field');
+      if (!container) return;
+      container.innerHTML = '';
+      container.className = "relative w-full h-full pt-8 pb-4 px-2 overflow-visible";
+
+      formations[currentFormation].forEach((slot) => {
+        const player = playersData[slot.id];
+        if (!player) return;
+
+        const card = document.createElement('div');
+        card.className = "absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group transition-all duration-300 flex flex-col items-center justify-center";
+        card.style.top = slot.top;
+        card.style.left = slot.left;
+
+        card.ondragover = (e) => e.preventDefault();
+        card.ondrop = (e) => handleDropOnField(e, slot.id);
+
+        card.innerHTML = `
+          <div class="relative flex flex-col items-center justify-center w-[110px] sm:w-[130px]">
+            <div class="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform shrink-0 drop-shadow-md z-10">
+              <svg viewBox="0 0 100 100" class="w-full h-full overflow-visible">
+                <path d="M 20 28 L 35 15 L 65 15 L 80 28 L 72 42 L 64 36 L 64 85 L 36 85 L 36 36 L 28 42 Z" fill="rgba(0,0,0,0.4)" transform="translate(2, 3)" />
+                <path d="M 20 28 L 35 15 L 65 15 L 80 28 L 72 42 L 64 36 L 64 85 L 36 85 L 36 36 L 28 42 Z" fill="#002B66" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" />
+                <path d="M 36 45 L 64 45 L 64 62 L 36 62 Z" fill="#E30613" />
+                <path d="M 20 28 L 28 20 L 35 25 L 28 42 Z" fill="#E30613" />
+                <path d="M 80 28 L 72 20 L 65 25 L 72 42 Z" fill="#E30613" />
+                <path d="M 38 15 Q 50 25 62 15 Q 50 18 38 15 Z" fill="#FFFFFF" />
+                ${player.isCaptain ? `
+                  <g transform="translate(66, 26) rotate(-20)">
+                    <rect x="0" y="0" width="13" height="14" fill="#FFD700" rx="2" stroke="#000000" stroke-width="1" />
+                    <text x="6.5" y="10.5" fill="#000000" font-size="10" font-weight="900" font-family="sans-serif" text-anchor="middle">C</text>
+                  </g>
+                ` : ''}
+              </svg>
+              <span class="absolute inset-0 flex items-center justify-center text-white font-black text-[11px] sm:text-xs pt-0.5 font-mono drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] pointer-events-none">
+                ${player.num}
+              </span>
+            </div>
+
+            <div class="bg-bahia-dark border ${player.isCaptain ? 'border-bahia-gold' : 'border-white/30'} px-2 py-1 rounded-lg shadow-2xl text-center w-full flex flex-col items-center justify-center backdrop-blur-md">
+              <p class="text-[10px] sm:text-[11px] font-black tracking-tight text-white leading-tight w-full truncate">${player.name}</p>
+              <div class="my-0.5">
+                <span class="text-[8px] sm:text-[8.5px] font-extrabold text-bahia-gold uppercase bg-black/60 px-1.5 py-0.5 rounded inline-block">${player.pos}</span>
+              </div>
+              <p class="text-[8px] sm:text-[8.5px] leading-tight text-slate-200 font-medium w-full break-words">${player.role}</p>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function renderBench() {
+      const benchContainer = document.getElementById('bench-list');
+      if (!benchContainer) return;
+      benchContainer.innerHTML = '';
+
+      const filtered = benchPlayers.filter(id => {
+        if (currentFilter === 'todos') return true;
+        return playersData[id] && playersData[id].cat === currentFilter;
+      });
+
+      const countElem = document.getElementById('bench-count');
+      if (countElem) countElem.innerText = benchPlayers.length;
+
+      filtered.forEach((id) => {
+        const player = playersData[id];
+        if (!player) return;
+
+        const item = document.createElement('div');
+        item.draggable = true;
+        item.ondragstart = (e) => e.dataTransfer.setData('text/plain', id);
+        item.className = "bg-bahia-dark/80 hover:bg-bahia-blue border border-white/10 hover:border-bahia-gold/50 p-2 rounded-xl flex items-center gap-2 cursor-grab active:cursor-grabbing transition shadow group";
+        
+        item.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-bahia-blue border border-white/30 flex items-center justify-center text-white font-bold text-[10px] group-hover:border-bahia-gold shrink-0">
+            ${player.num}
+          </div>
+          <div class="overflow-hidden">
+            <p class="text-xs font-bold text-white truncate">${player.name}</p>
+            <p class="text-[9px] font-semibold text-slate-400 uppercase">${player.pos}</p>
+          </div>
+        `;
+
+        benchContainer.appendChild(item);
+      });
+    }
+
+    function switchFormation(fmt) {
+      currentFormation = fmt;
+      const btn433 = document.getElementById('btn-433');
+      const btn4231 = document.getElementById('btn-4231');
+
+      if (fmt === '433') {
+        if (btn433) btn433.className = "px-3 sm:px-5 py-2 text-xs font-bold rounded-lg transition-all duration-200 bg-bahia-red text-white shadow-lg";
+        if (btn4231) btn4231.className = "px-3 sm:px-5 py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-400 hover:text-white";
+      } else {
+        if (btn4231) btn4231.className = "px-3 sm:px-5 py-2 text-xs font-bold rounded-lg transition-all duration-200 bg-bahia-red text-white shadow-lg";
+        if (btn433) btn433.className = "px-3 sm:px-5 py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-400 hover:text-white";
+      }
+
+      renderField();
+    }
+
+    function filterBench(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.bench-filter').forEach(btn => {
+        if (btn.dataset.filter === cat) {
+          btn.className = "bench-filter py-1.5 rounded-lg bg-bahia-red text-white transition";
+        } else {
+          btn.className = "bench-filter py-1.5 rounded-lg text-slate-400 hover:text-white transition";
+        }
+      });
+      renderBench();
+    }
+
+    function handleDropOnField(e, fieldPlayerId) {
+      e.preventDefault();
+      const benchPlayerId = e.dataTransfer.getData('text/plain');
+      if (!benchPlayerId || !benchPlayers.includes(benchPlayerId)) return;
+
+      benchPlayers = benchPlayers.filter(id => id !== benchPlayerId);
+      benchPlayers.push(fieldPlayerId);
+
+      const slotIndex = formations[currentFormation].findIndex(s => s.id === fieldPlayerId);
+      if (slotIndex !== -1) {
+        formations[currentFormation][slotIndex].id = benchPlayerId;
+      }
+
+      renderField();
+      renderBench();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderField();
+      renderBench();
+    });
+  </script>
+</body>
+</html>

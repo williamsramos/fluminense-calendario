@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendário Tricolor — EC Bahia 26</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<link rel="shortcut icon" href="bahia-logo.png" type="image/x-icon">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: { 
+          950: '#030B18', 
+          900: '#071329', 
+          800: '#0E1F3F', 
+          700: '#152C56', 
+          600: '#1D3B70' 
+        },
+        azul: { 
+          DEFAULT: '#00468C', 
+          600: '#003366', 
+          400: '#0056F3' 
+        },
+        vermelho: { 
+          DEFAULT: '#E31C22', 
+          600: '#B31217', 
+          400: '#FF3B3B' 
+        },
+        branco: {
+          DEFAULT: '#FFFFFF',
+          100: '#F1F5F9',
+          200: '#E2E8F0'
+        },
+        ouro: { 
+          DEFAULT: '#FFD700', 
+          600: '#CCAC00',
+          400: '#FFE033'
+        },
+        garnet: { 
+          DEFAULT: '#E31C22', 
+          600: '#B31217', 
+          400: '#FF3B3B' 
+        },
+        blaugrana: { 
+          DEFAULT: '#00468C', 
+          600: '#003366' 
+        },
+        gold: { 
+          DEFAULT: '#FFD700', 
+          600: '#CCAC00' 
+        },
+      },
+      fontFamily: {
+        display: ['Oswald', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+    }
+  }
+}
+</script>
+</head>
+<body class="font-body text-slate-200 min-h-screen pb-24 relative bg-navy-950 overflow-x-hidden">
+
+  <!-- Fundo fixo cobrindo toda a tela (Full Page) com a imagem da Arena Fonte Nova -->
+  <div class="fixed inset-0 w-screen h-screen z-0 pointer-events-none">
+    <img src="arena_fonte_nova.jpg" alt="Fonte nova" class="w-full h-full object-cover object-center">
+    <!-- Camadas de escurecimento e vinheta para legibilidade perfeita do conteúdo -->
+    <div class="absolute inset-0 bg-navy-950/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-garnet/15 via-transparent to-blaugrana/15"></div>
+  </div>
+
+<!-- ===== HEADER ===== -->
+<header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0 shadow-lg"
+           style="background: conic-gradient(from 180deg, #E31C22 0 50%, #00468C 50% 100%); box-shadow: 0 0 0 3px #FFC72C55;">
+        <img src="bahia-logo.png" alt="logo bahia" class="w-8 h-8">
+      </div>
+      <div>
+        <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-gold uppercase font-semibold">Temporada 2026</p>
+        <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Calendário Tricolor</h1>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+      <a href="calendario.html" class="text-gold hover:text-white border-b-2 border-amber-400 transition-colors">Calendário</a>
+      <a href="bahia_fem.html" class="text-slate-400 hover:text-white transition-colors">Bahia Fem.</a>
+      <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
+      <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
+      <a href="titulos.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Glórias</a>
+      <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button id="btnAddGame" class="hidden sm:flex items-center gap-2 bg-garnet hover:bg-garnet-600 transition-colors text-white text-sm font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-garnet/30">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Adicionar jogo
+      </button>
+
+      <!-- Hamburger Button -->
+      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex-col items-center justify-center text-center space-y-4">
+    <nav class="flex flex-col gap-4 text-base font-medium">
+      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
+      <a href="calendario.html" class="text-gold hover:text-white transition-colors py-1 border-b border-white/5">Calendário</a>
+      <a href="bahia_fem.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Mulheres de Aço</a>
+      <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
+      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
+      <a href="titulos.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Glórias</a>
+      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
+    </nav>
+  </div>
+</header>
+
+<main class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 pt-6">
+
+  <!-- ===== SELETOR DE MODALIDADE ===== -->
+  <div class="flex justify-center mb-6">
+    <div class="inline-flex bg-navy-900/80 p-1 rounded-xl border border-white/10 gap-1">
+      <button 
+        id="btnCategoryMasculino" 
+        onclick="setCategory('masculino')" 
+        class="px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 bg-gold text-navy-950 shadow-md">
+        Masculino
+      </button>
+      <a 
+        href="bahia_fem.html" 
+        id="btnCategoryFeminino" 
+        class="px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white">
+        Feminino (Mulheres de Aço)
+      </a>
+    </div>
+  </div>
+
+      <!-- 2. SELETOR DE TEMPORADA -->
+     <div class="season-selector flex items-center justify-center p-1 bg-slate-900/60 rounded-xl border border-slate-700/40 w-48 mx-auto shadow-md">
+      <button data-season="2026" class="flex-1 py-1 text-xs font-bold rounded-lg bg-amber-400 text-slate-950 transition-all">
+        2026
+      </button>
+      <!--<button data-season="2027" class="flex-1 py-1 text-xs font-bold rounded-lg text-slate-400 transition-all">
+        2027
+      </button>-->
+    </div> 
+
+  <!-- ===== 1. DESTAQUE INTELIGENTE DO PRÓXIMO JOGO ===== -->
+  <div id="heroNext" class="mt-2"></div>
+
+  <!-- ===== 2. DASHBOARD DE ESTATÍSTICAS ===== -->
+  <section class="mt-6">
+    <h2 id="dashboardTitle" class="text-sm font-semibold tracking-wide text-slate-300 uppercase mb-3">Desempenho</h2>
+    <div id="statGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4"></div>
+  </section>
+
+  <!-- ===== 3. BARRA DE PROGRESSO DA TEMPORADA ===== -->
+  <section id="progressWrap" class="mt-6">
+    <div class="flex items-center justify-between text-xs text-slate-300 mb-1.5 font-medium">
+      <span id="progressLabel">0 de 0 jogos disputados</span>
+      <span id="progressPct" class="font-mono text-gold">0%</span>
+    </div>
+    <div class="progress-track w-full h-2.5 rounded-full overflow-hidden bg-navy-900/90 border border-white/10">
+      <div id="progressFill" class="progress-fill h-full rounded-full bg-gradient-to-r from-garnet to-gold" style="width:0%"></div>
+    </div>
+  </section>
+
+  <!-- ===== TABS ===== -->
+  <nav class="mt-8">
+    <div id="tabBar" class="flex items-center gap-6 overflow-x-auto scrollbar-thin border-b border-white/10 pb-3.5"></div>
+  </nav>
+
+  <!-- ===== SUBFILTROS ===== -->
+  <div class="mt-5 flex items-center gap-2" id="subFilterBar"></div>
+
+  <!-- ===== LISTAS ===== -->
+  <div class="mt-6">
+
+    <section id="section-proximos">
+      <h2 class="flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-300 uppercase mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Próximos jogos
+      </h2>
+      <div id="listProximos" class="grid gap-3"></div>
+    </section>
+
+    <section id="section-recentes" class="mb-10">
+      <h2 class="flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-300 uppercase mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Resultados recentes
+      </h2>
+      <div id="listRecentes" class="grid gap-3"></div>
+    </section>
+
+    <div id="emptyState" class="hidden text-center py-16 bg-navy-900/60 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl">
+      <p class="font-display text-xl text-slate-200">Nenhum jogo cadastrado nesta aba.</p>
+      <p class="text-sm text-slate-400 mt-1">Use "Adicionar jogo" para começar a montar o calendário.</p>
+    </div>
+  </div>
+</main>
+
+<!-- Botão flutuante mobile -->
+<button id="btnAddGameMobile" class="sm:hidden fixed bottom-5 right-5 w-14 h-14 rounded-full bg-garnet shadow-xl shadow-garnet/40 flex items-center justify-center text-white z-30">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+</button>
+
+<!-- ===== 5. MODAL — CRIAÇÃO / EDIÇÃO ===== -->
+<div id="modalOverlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+  <div class="bg-navy-900/95 border border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl rise-in backdrop-blur-lg">
+    <div class="flex items-center justify-between mb-5">
+      <h3 id="modalTitle" class="font-display text-xl text-white">Novo jogo</h3>
+      <button id="btnCloseModal" class="text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
+    </div>
+    <form id="gameForm" class="space-y-3.5">
+      <div>
+        <label class="text-xs text-slate-300 mb-1 block">Competição</label>
+        <select id="fComp" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet text-white">
+          <option value="brasileiro">Brasileiro Serie A</option>
+          <option value="libertadores">Libertadores</option>
+          <option value="copadobrasil">Copa do Brasil</option>
+          <option value="copadonordeste">Copa do Nordeste </option>
+          <option value="baiano">Baiano</option>
+          <option value="amistoso">Amistoso</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs text-slate-300 mb-1 block">Fase / Rodada</label>
+        <input id="fRound" type="text" placeholder="Ex: Rodada 5ª ou Oitavas de Final" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet placeholder:text-slate-500 text-white">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs text-slate-300 mb-1 block">Data</label>
+          <input id="fDate" type="date" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet text-white">
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 mb-1 block">Horário</label>
+          <input id="fTime" type="time" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet text-white">
+        </div>
+      </div>
+      <div>
+        <label class="text-xs text-slate-300 mb-1 block">Mando de campo</label>
+        <div class="flex gap-2 mt-1">
+          <button type="button" data-mando="casa" class="mando-btn active flex-1 py-2 rounded-xl text-xs font-semibold border border-rose-600 bg-rose-950/40 text-white transition-all">
+            Bahia em casa
+          </button>
+          <button type="button" data-mando="fora" class="mando-btn flex-1 py-2 rounded-xl text-xs font-semibold border border-slate-700/60 bg-navy-950/50 text-slate-300 hover:text-white transition-all">
+            Bahia fora
+          </button>
+        </div>
+      </div>
+      <div>
+        <label class="text-xs text-slate-300 mb-1 block">Adversário</label>
+        <input id="fRival" type="text" placeholder="Ex: Palmeiras" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet placeholder:text-slate-500 text-white">
+      </div>
+      <div>
+        <label class="text-xs text-slate-300 mb-1 block">Estádio</label>
+        <input id="fStadium" type="text" placeholder="Ex: Arena Fonte Nova" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet placeholder:text-slate-500 text-white">
+      </div>
+      <div>
+        <label class="text-xs text-slate-300 mb-1 block">Placar <span class="text-slate-400">(deixe em branco se ainda não jogou)</span></label>
+        <input id="fScore" type="text" placeholder="Ex: 2x0" class="w-full bg-navy-950/80 border border-white/10 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-garnet placeholder:text-slate-500 text-white">
+      </div>
+      <p id="formError" class="hidden text-xs text-garnet-400 bg-garnet/10 border border-garnet/30 rounded-lg px-3 py-2"></p>
+      <button type="submit" class="w-full bg-gradient-to-r from-garnet to-garnet-600 hover:brightness-110 transition text-white font-semibold py-2.5 rounded-lg mt-2 shadow-lg shadow-garnet/25">
+        <span id="submitLabel">Salvar jogo</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+ <!-- 3b. AVISO "SEM JOGOS" (temporada futura vazia)
+    <div id="empty-card" class="hidden mt-4 p-6 bg-slate-900/80 rounded-2xl border border-slate-700/50 text-center shadow-xl">
+      <span class="text-2xl">🗓️</span>
+      <p class="mt-2 font-semibold text-slate-200">Temporada 2027 ainda não começou</p>
+      <p class="text-xs text-slate-400 mt-1">Assim que a tabela for divulgada, os jogos aparecem aqui automaticamente.</p>
+    </div>
+  </div> -->
+
+<footer class="relative z-10 text-center py-10 text-xs text-slate-400 border-t border-white/10 bg-navy-950/90 backdrop-blur-md mt-16">
+  EC Bahia &copy; 2026 — Calendário de Jogos Oficiais 
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elenco Tricolor — EC Bahia 2026</title>
+  
+  <!-- Estilos e Fontes -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   <!-- Cores personalizadas da identidade do Bahia -->
+  <script>
+function initTailwindConfig() {
+  if (!window.tailwindInitialized) {
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Fundo escuro baseado na paleta tricolor
+              navy: { 
+                950: '#0B0406', 
+                900: '#17090D', 
+                800: '#260F16', 
+                700: '#381620', 
+                600: '#4D1D2B' 
+              },
+              // Grená / Vinho Oficial
+              grena: { 
+                DEFAULT: '#800020', 
+                600: '#5E0017', 
+                400: '#A30029' 
+              },
+              // Verde Oficial
+              verde: { 
+                DEFAULT: '#006633', 
+                600: '#004D26', 
+                400: '#008040' 
+              },
+              // Branco Tricolor
+              branco: {
+                DEFAULT: '#FFFFFF',
+                100: '#F1F5F9',
+                200: '#E2E8F0'
+              },
+              // Ouro / Dourado para detalhes e títulos
+              ouro: { 
+                DEFAULT: '#D4AF37', 
+                600: '#AA8C2C',
+                400: '#F1C40F'
+              },
+              // Mapeamentos mantidos para compatibilidade com a estrutura existente:
+              garnet: { 
+                DEFAULT: '#800020', 
+                600: '#5E0017', 
+                400: '#A30029' 
+              },
+              blaugrana: { 
+                DEFAULT: '#006633', 
+                600: '#004D26' 
+              },
+              gold: { 
+                DEFAULT: '#D4AF37', 
+                600: '#AA8C2C' 
+              }
+            },
+            fontFamily: {
+              display: ['Oswald', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+          }
+        }
+      };
+    }
+    window.tailwindInitialized = true;
+  }
+}
+  </script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="fluminense.png" type="image/x-icon">
+</head>
+<body class="font-body text-slate-200 min-h-screen bg-navy-950 pb-24">
+
+  <!-- ===== HEADER ===== -->
+  <header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm text-white shadow-lg overflow-hidden shrink-0"
+            style="background: conic-gradient(from 180deg, #8A0027 0% 33.33%, #FFFFFF 33.33% 66.66%, #006633 66.66% 100%);">
+          <img src="fluminense.png" alt="Escudo flu" class="w-10 h-10 object-contain drop-shadow p-0.5">
+        </div>
+        <div>
+          <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-gold uppercase font-semibold">Temporada 2026</p>
+          <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Elenco Tricolor Carioca</h1>
+        </div>
+      </div>
+
+      <!-- Navegação Desktop -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium" aria-label="Navegação Principal">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+        <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
+        <a href="flu_fem.html" class="text-slate-400 hover:text-white transition-colors">Flu Fem.</a>
+        <a href="elenco.html" class="text-gold hover:text-white border-b-2 border-amber-400 transition-colors">Elenco</a>
+        <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
+        <a href="titulos.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Glórias</a>
+        <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+      </nav>
+
+      <!-- Botão Menu Mobile -->
+      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Abrir Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex-col items-center justify-center text-center space-y-4">
+      <nav class="flex flex-col gap-4 text-base font-medium w-full">
+        <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
+        <a href="calendario.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Calendário</a>
+        <a href="flu_fem.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Feminino</a>
+        <a href="elenco.html" class="text-gold hover:text-white transition-colors py-1 border-b border-white/5">Elenco</a>
+        <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
+        <a href="titulos.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Glórias</a>
+        <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main id="main-content" class="max-w-6xl mx-auto px-5 sm:px-8 mt-8 space-y-10">
+
+    <!-- GOLEIROS -->
+    <section aria-labelledby="heading-goleiros">
+      <h2 id="heading-goleiros" class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-gold"></span> Goleiros
+      </h2>
+      <div id="container-goleiros" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- DEFENSORES -->
+    <section aria-labelledby="heading-defensores">
+      <h2 id="heading-defensores" class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-blaugrana"></span> Defensores
+      </h2>
+      <div id="container-defensores" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- MEIO-CAMPISTAS -->
+    <section aria-labelledby="heading-meias">
+      <h2 id="heading-meias" class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-garnet"></span> Meio-campistas
+      </h2>
+      <div id="container-meias" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- ATACANTES -->
+    <section aria-labelledby="heading-atacantes">
+      <h2 id="heading-atacantes" class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Atacantes
+      </h2>
+      <div id="container-atacantes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="text-center py-10 text-xs text-slate-500 border-t border-navy-900 mt-16">
+    Fluminense FC &copy; 2026 — Portal do Plantel Oficial
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle Menu Mobile
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          mobileMenu.classList.toggle('flex');
+        });
+      }
+
+      // Dados do elenco inicial
+const elencoInicial = [
+  // Goleiros
+  { id: 1, name: "Fábio", position: "Goleiro", country: "br", category: "goleiros" },
+  { id: 2, name: "Vitor Eudes", position: "Goleiro", country: "br", category: "goleiros" },
+  { id: 3, name: "Marcelo Pitaluga", position: "Goleiro", country: "br", category: "goleiros" },
+
+  // Defensores (Laterais e Zagueiros)
+  { id: 4, name: "Guilherme Arana", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 5, name: "Renê", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 6, name: "Léo Jance", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 7, name: "Guga", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 8, name: "Jhonny", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 9, name: "Julio Fidelis", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 10, name: "Samuel Xavier", position: "Lateral", country: "br", category: "defensores", goals: 0 },
+  { id: 11, name: "Thiago Silva", position: "Zagueiro", country: "br", category: "defensores", goals: 0, isCaptain: true },
+  { id: 12, name: "Juan Pablo Freytes", position: "Zagueiro", country: "ar", category: "defensores", goals: 0 },
+  { id: 13, name: "Julián Millán", position: "Zagueiro", country: "co", category: "defensores", goals: 0 },
+  { id: 14, name: "Jemmes", position: "Zagueiro", country: "br", category: "defensores", goals: 0 },
+  { id: 15, name: "Ignácio", position: "Zagueiro", country: "br", category: "defensores", goals: 0 },
+  { id: 16, name: "Igor Rabello", position: "Zagueiro", country: "br", category: "defensores", goals: 0 },
+
+  // Meio-campistas
+  { id: 17, name: "Martinelli", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 18, name: "Otávio", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 19, name: "Luis Fernando", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 20, name: "Hércules", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 21, name: "Nonato", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 22, name: "Alisson", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 23, name: "Jefferson Savarino", position: "Meio-campista", country: "ve", category: "meias", goals: 0 },
+  { id: 24, name: "Luciano Acosta", position: "Meio-campista", country: "ar", category: "meias", goals: 0 },
+  { id: 25, name: "Ganso", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+  { id: 26, name: "Yago Ferreira", position: "Meio-campista", country: "br", category: "meias", goals: 0 },
+
+  // Atacantes
+  { id: 27, name: "Yeferson Soteldo", position: "Atacante", country: "ve", category: "atacantes", goals: 0 },
+  { id: 28, name: "Matheus Reis", position: "Atacante", country: "br", category: "atacantes", goals: 0 },
+  { id: 29, name: "Agustín Canobbio", position: "Atacante", country: "uy", category: "atacantes", goals: 0 },
+  { id: 30, name: "Riquelme", position: "Atacante", country: "br", category: "atacantes", goals: 0 },
+  { id: 31, name: "Kevin Serna", position: "Atacante", country: "co", category: "atacantes", goals: 0 },
+  { id: 32, name: "John Kennedy", position: "Atacante", country: "br", category: "atacantes", goals: 0 },
+  { id: 33, name: "Rodrigo Castillo", position: "Atacante", country: "ar", category: "atacantes", goals: 0 },
+  { id: 34, name: "Hulk", position: "Atacante", country: "br", category: "atacantes", goals: 0 },
+  { id: 35, name: "Germán Cano", position: "Atacante", country: "ar", category: "atacantes", goals: 0 }
+];
+
+      let elenco = JSON.parse(localStorage.getItem('elencoBahia')) || elencoInicial;
+
+      function salvarElenco() {
+        localStorage.setItem('elencoFlu', JSON.stringify(elenco));
+        renderizarElenco();
+      }
+
+      function alterarGols(id, quantidade) {
+        const jogador = elenco.find(j => j.id === id);
+        if (jogador && jogador.goals !== undefined) {
+          jogador.goals = Math.max(0, jogador.goals + quantidade);
+          salvarElenco();
+        }
+      }
+
+      function renderizarElenco() {
+        const containers = {
+          goleiros: document.getElementById('container-goleiros'),
+          defensores: document.getElementById('container-defensores'),
+          meias: document.getElementById('container-meias'),
+          atacantes: document.getElementById('container-atacantes')
+        };
+
+        Object.values(containers).forEach(c => { if(c) c.innerHTML = ''; });
+
+        elenco.forEach(j => {
+          const isGoleiro = j.category === 'goleiros';
+          const flagUrl = `https://flagcdn.com/w20/${j.country}.png`;
+          const captainBadge = j.isCaptain ? '<span class="text-xs text-gold font-normal">(Capitão)</span>' : '';
+
+          const card = document.createElement('div');
+          card.className = "bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center justify-between hover:border-blaugrana transition";
+
+          if (isGoleiro) {
+            card.innerHTML = `
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
+                <div>
+                  <h3 class="font-display text-base text-white font-semibold flex items-center gap-2">
+                    ${j.name} <img src="${flagUrl}" alt="Bandeira ${j.country.toUpperCase()}" class="w-4 h-3 rounded-sm object-cover">
+                  </h3>
+                  <p class="text-[11px] text-slate-400">${j.position}</p>
+                </div>
+              </div>
+            `;
+          } else {
+            card.innerHTML = `
+              <div>
+                <h3 class="font-display text-base text-white font-semibold flex items-center gap-2 flex-wrap">
+                  ${j.name} 
+                  <img src="${flagUrl}" alt="Bandeira ${j.country.toUpperCase()}" class="w-4 h-3 rounded-sm object-cover">
+                  ${captainBadge}
+                </h3>
+                <p class="text-[11px] text-slate-400">${j.position}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-800 border border-navy-700 ${j.goals > 0 ? 'text-gold' : 'text-slate-300'} flex items-center gap-1">
+                  ⚽ <span>${j.goals}</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <button data-id="${j.id}" data-action="add" aria-label="Adicionar gol para ${j.name}" class="btn-gol w-5 h-5 bg-navy-800 hover:bg-gold hover:text-navy-950 text-slate-300 text-xs font-bold rounded flex items-center justify-center transition">+</button>
+                  <button data-id="${j.id}" data-action="sub" aria-label="Remover gol de ${j.name}" class="btn-gol w-5 h-5 bg-navy-800 hover:bg-red-500 hover:text-white text-slate-300 text-xs font-bold rounded flex items-center justify-center transition">-</button>
+                </div>
+              </div>
+            `;
+          }
+
+          if (containers[j.category]) {
+            containers[j.category].appendChild(card);
+          }
+        });
+      }
+
+      // Event Delegation para clique nos botões de gol
+      document.getElementById('main-content').addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-gol');
+        if (btn) {
+          const id = Number(btn.dataset.id);
+          const action = btn.dataset.action;
+          alterarGols(id, action === 'add' ? 1 : -1);
+        }
+      });
+
+      // Renderização inicial
+      renderizarElenco();
+    });
+  </script>
+  
+  <script src="utils.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Glórias - Esporte Clube Bahia</title>
+  <!-- Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="bahia-logo.png" type="image/x-icon">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  
+
+  <!-- ===== HEADER ===== -->
+  <header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm text-white shadow-lg overflow-hidden shrink-0"
+            style="background: conic-gradient(from 180deg, #8A0027 0% 33.33%, #FFFFFF 33.33% 66.66%, #006633 66.66% 100%);">
+          <img src="fluminense.png" alt="Escudo flu" class="w-10 h-10 object-contain drop-shadow p-0.5">
+        </div>
+        <div>
+          <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-amber-400 uppercase font-semibold">Memória Tricolor</p>
+          <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Galeria de Glórias</h1>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+        <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
+        <a href="bahia_fem.html" class="text-slate-400 hover:text-white transition-colors">Flu Fem.</a>
+        <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
+        <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
+        <a href="titulos.html" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-0.5">Glórias</a>
+        <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors">Classificação</a>
+      </nav>
+
+      <!-- Hamburger Button -->
+      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 py-6 flex flex-col items-center justify-center text-center space-y-4">
+      <nav class="flex flex-col gap-4 text-base font-medium w-full">
+        <a href="index.html" class="text-slate-300 hover:text-amber-400 transition-colors py-1 border-b border-white/5">Início</a>
+        <a href="calendario.html" class="text-slate-300 hover:text-amber-400 transition-colors py-1 border-b border-white/5">Calendário</a>
+        <a href="bahia_fem.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Feminino</a>
+        <a href="elenco.html" class="text-slate-300 hover:text-amber-400 transition-colors py-1 border-b border-white/5">Elenco</a>
+        <a href="escalacao.html" class="text-slate-300 hover:text-amber-400 transition-colors py-1 border-b border-white/5">Escalação</a>
+        <a href="titulos.html" class="text-amber-400 hover:text-white transition-colors py-1 border-b border-white/5">Glórias</a>
+        <a href="classificacao.html" class="text-slate-300 hover:text-amber-400 transition-colors py-1">Classificação</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="max-w-4xl mx-auto min-h-screen pb-20 p-4 sm:p-6 space-y-6">
+    
+    <!-- Cabeçalho da Seção -->
+    <div class="flex items-center justify-between">
+      <h2 class="text-lg font-bold text-white tracking-wide">Conquistas Históricas</h2>
+      <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        Tricolor
+      </span>
+    </div>
+
+    <!-- Filtros com Ação JS (data-filter) -->
+    <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <button data-filter="todos" class="btn-filtro px-3 py-1.5 rounded-lg text-xs font-medium bg-rose-950/60 text-white border border-rose-600 transition-all shrink-0">
+        Todos
+      </button>
+      <button data-filter="nacional" class="btn-filtro px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all shrink-0">
+        Nacionais
+      </button>
+      <button data-filter="regional" class="btn-filtro px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all shrink-0">
+        Copa do Nordeste
+      </button>
+      <button data-filter="estadual" class="btn-filtro px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all shrink-0">
+        Estaduais
+      </button>
+    </div>
+
+    <!-- Container Renderizado via JS -->
+    <div id="grid-conquistas" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- Os cards serão injetados dinamicamente pelo titulos.js -->
+    </div>
+
+    <!-- Seção Hall dos Ídolos -->
+<div class="space-y-4 pt-6 border-t border-slate-800">
+  <div class="flex items-center justify-between">
+    <h2 class="text-lg font-bold text-white tracking-wide">Hall das Lendas</h2>
+    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+      Ídolos
+    </span>
+  </div>
+
+  <div id="grid-idolos" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <!-- Renderizado dinamicamente pelo JS -->
+  </div>
+</div>
+
+  </main>
+
+  <!-- Script de Alternância do Menu Mobile -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (hamburgerBtn && mobileMenu) {
+      hamburgerBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+
+  <!-- Script da lógica da página -->
+<script src="utils.js"></script>
+<script src="titulos.js"></script>
+</body>
+</html>
