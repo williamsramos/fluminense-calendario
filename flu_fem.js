@@ -84,8 +84,8 @@ const listaAtualizadaDeGamesFeminino = [
   // COPA DO BRASIL FEMININA
   { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "3ª Fase", date: "27/05/26", team1: "fluminense", team2: "minas-brasilia", stadium: "Luso-Brasileiro", time: "19:00", score: "2 x 0" },
   { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Oitavas de final", date: "21/07/26", team1: "fluminense", team2: "cruzeiro", stadium: "Luso-Brasileiro", time: "16:30", score: "2 x 1" },
-  { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Ida)", date: "15/10/26", team1: "flamengo", team2: "fluminense", stadium: "Luso-Brasileiro", time: "a definir", score: "x" },
-  { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Volta)", date: "22/10/26", team1: "fluminense", team2: "flamengo", stadium: "Luso-Brasileiro", time: "a definir", score: "x" }
+  { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Ida)", date: "15/10/26", team1: "flamengo", team2: "fluminense", stadium: "Luso-Brasileiro", time: "19:00", score: "x" },
+  { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Volta)", date: "22/10/26", team1: "fluminense", team2: "flamengo", stadium: "Luso-Brasileiro", time: "19:00", score: "x" }
 
 
 ]
