@@ -83,26 +83,26 @@ const LocalStorage = {
 // 📊 Classificação da Série A - 2026
 // (o campo "status" é recalculado pela posição; aqui só serve de valor inicial)
 const dadosClassificacao = [
-  { pos: 1, clube: "Flamengo", slug: "flamengo", pts: 60, pj: 28, vit: 18, e: 6, der: 4, gm: 55, gc: 23, sg: 32, ultimas: ["V", "V", "V", "V", "V"], proximo: "santos", status: "libertadores_fase_grupos" },
-  { pos: 2, clube: "Palmeiras", slug: "palmeiras", pts: 57, pj: 28, vit: 16, e: 9, der: 3, gm: 47, gc: 21, sg: 26, ultimas: ["V", "E", "E", "V", "E"], proximo: "bahia", status: "libertadores_fase_grupos" },
-  { pos: 3, clube: "Athletico-PR", slug: "athletico-pr", pts: 49, pj: 28, vit: 14, e: 7, der: 7, gm: 43, gc: 32, sg: 11, ultimas: ["V", "E", "D", "E", "V"], proximo: "atletico-mg", status: "libertadores_fase_grupos" },
-  { pos: 4, clube: "Fluminense", slug: "fluminense", pts: 48, pj: 28, vit: 13, e: 9, der: 6, gm: 44, gc: 36, sg: 8, ultimas: ["V", "E", "V", "D", "V"], proximo: "coritiba", status: "libertadores_fase_grupos" },
-  { pos: 5, clube: "Bahia", slug: "bahia", pts: 46, pj: 28, vit: 12, e: 10, der: 6, gm: 43, gc: 35, sg: 8, ultimas: ["V", "V", "V", "V", "D"], proximo: "palmeiras", status: "pre_libertadores" },
-  { pos: 6, clube: "Cruzeiro", slug: "cruzeiro", pts: 45, pj: 28, vit: 13, e: 6, der: 9, gm: 42, gc: 40, sg: 2, ultimas: ["V", "D", "V", "D", "V"], proximo: "sao-paulo", status: "sul_americana" },
-  { pos: 7, clube: "Atlético-MG", slug: "atletico-mg", pts: 40, pj: 27, vit: 11, e: 7, der: 9, gm: 36, gc: 32, sg: 4, ultimas: ["E", "V", "D", "V", "E"], proximo: "athletico-pr", status: "sul_americana" },
-  { pos: 8, clube: "Santos", slug: "santos", pts: 38, pj: 27, vit: 10, e: 8, der: 9, gm: 41, gc: 40, sg: 1, ultimas: ["E", "V", "V", "V", "V"], proximo: "flamengo", status: "sul_americana" },
-  { pos: 9, clube: "Coritiba", slug: "coritiba", pts: 38, pj: 28, vit: 10, e: 8, der: 10, gm: 37, gc: 43, sg: -6, ultimas: ["V", "V", "D", "E", "D"], proximo: "fluminense", status: "sul_americana" },
-  { pos: 10, clube: "Bragantino", slug: "bragantino", pts: 36, pj: 27, vit: 10, e: 6, der: 11, gm: 33, gc: 31, sg: 2, ultimas: ["V", "D", "D", "E", "D"], proximo: "mirassol", status: "sul_americana" },
-  { pos: 11, clube: "São Paulo", slug: "sao-paulo", pts: 36, pj: 27, vit: 10, e: 6, der: 11, gm: 32, gc: 30, sg: 2, ultimas: ["D", "V", "V", "D", "V"], proximo: "cruzeiro", status: "sul_americana" },
-  { pos: 12, clube: "Botafogo", slug: "botafogo", pts: 35, pj: 28, vit: 9, e: 8, der: 11, gm: 41, gc: 45, sg: -4, ultimas: ["D", "E", "E", "V", "D"], proximo: "vasco", status: "neutro" },
-  { pos: 13, clube: "Vitória", slug: "vitoria", pts: 33, pj: 28, vit: 9, e: 6, der: 13, gm: 28, gc: 42, sg: -14, ultimas: ["D", "D", "V", "E", "D"], proximo: "chapecoense", status: "neutro" },
-  { pos: 14, clube: "Corinthians", slug: "corinthians", pts: 32, pj: 28, vit: 8, e: 8, der: 12, gm: 29, gc: 32, sg: -3, ultimas: ["D", "D", "D", "D", "D"], proximo: "internacional", status: "neutro" },
-  { pos: 15, clube: "Mirassol", slug: "mirassol", pts: 32, pj: 28, vit: 8, e: 8, der: 12, gm: 33, gc: 42, sg: -9, ultimas: ["E", "D", "V", "E", "V"], proximo: "bragantino", status: "neutro" },
-  { pos: 16, clube: "Vasco da Gama", slug: "vasco", pts: 31, pj: 27, vit: 8, e: 7, der: 12, gm: 34, gc: 41, sg: -7, ultimas: ["D", "V", "D", "V", "V"], proximo: "botafogo", status: "neutro" },
-  { pos: 17, clube: "Grêmio", slug: "gremio", pts: 29, pj: 28, vit: 7, e: 8, der: 13, gm: 30, gc: 38, sg: -8, ultimas: ["V", "D", "D", "D", "E"], proximo: "remo", status: "rebaixamento" },
-  { pos: 18, clube: "Internacional", slug: "internacional", pts: 28, pj: 28, vit: 6, e: 10, der: 12, gm: 30, gc: 36, sg: -6, ultimas: ["E", "D", "D", "V", "D"], proximo: "corinthians", status: "rebaixamento" },
-  { pos: 19, clube: "Remo", slug: "remo", pts: 23, pj: 28, vit: 5, e: 8, der: 15, gm: 32, gc: 47, sg: -15, ultimas: ["D", "D", "D", "D", "D"], proximo: "gremio", status: "rebaixamento" },
-  { pos: 20, clube: "Chapecoense", slug: "chapecoense", pts: 18, pj: 27, vit: 3, e: 9, der: 15, gm: 29, gc: 53, sg: -24, ultimas: ["V", "D", "V", "D", "E"], proximo: "vitoria", status: "rebaixamento" }
+  { pos: 1, clube: "Flamengo", slug: "flamengo", pts: 61, pj: 29, vit: 18, e: 7, der: 4, gm: 57, gc: 25, sg: 32, ultimas: ["V", "V", "V", "V", "E"], proximo: "fluminense", status: "libertadores_fase_grupos" },
+  { pos: 2, clube: "Palmeiras", slug: "palmeiras", pts: 60, pj: 29, vit: 17, e: 9, der: 3, gm: 48, gc: 21, sg: 27, ultimas: ["E", "E", "V", "E", "V"], proximo: "corinthians", status: "libertadores_fase_grupos" },
+  { pos: 3, clube: "Fluminense", slug: "fluminense", pts: 51, pj: 29, vit: 14, e: 9, der: 6, gm: 48, gc: 36, sg: 12, ultimas: ["E", "V", "D", "V", "V"], proximo: "flamengo", status: "libertadores_fase_grupos" },
+  { pos: 4, clube: "Athletico-PR", slug: "athletico-pr", pts: 50, pj: 29, vit: 14, e: 8, der: 7, gm: 45, gc: 34, sg: 11, ultimas: ["E", "D", "E", "V", "E"], proximo: "chapecoense", status: "libertadores_fase_grupos" },
+  { pos: 5, clube: "Cruzeiro", slug: "cruzeiro", pts: 48, pj: 29, vit: 14, e: 6, der: 9, gm: 44, gc: 40, sg: 4, ultimas: ["D", "V", "D", "V", "V"], proximo: "bragantino", status: "pre_libertadores" },
+  { pos: 6, clube: "Bahia", slug: "bahia", pts: 46, pj: 29, vit: 12, e: 10, der: 7, gm: 43, gc: 36, sg: 7, ultimas: ["V", "V", "V", "D", "D"], proximo: "mirassol", status: "pre_libertadores" },
+  { pos: 7, clube: "Atlético-MG", slug: "atletico-mg", pts: 44, pj: 29, vit: 12, e: 8, der: 9, gm: 39, gc: 34, sg: 5, ultimas: ["D", "V", "V", "E", "E"], proximo: "santos", status: "sul_americana" },
+  { pos: 8, clube: "Santos", slug: "santos", pts: 42, pj: 29, vit: 11, e: 9, der: 9, gm: 45, gc: 43, sg: 2, ultimas: ["V", "V", "V", "E", "E"], proximo: "atletico-mg", status: "sul_americana" },
+  { pos: 9, clube: "Coritiba", slug: "coritiba", pts: 38, pj: 29, vit: 10, e: 8, der: 11, gm: 37, gc: 47, sg: -10, ultimas: ["V", "D", "E", "D", "D"], proximo: "botafogo", status: "sul_americana" },
+  { pos: 10, clube: "Bragantino", slug: "bragantino", pts: 37, pj: 29, vit: 10, e: 7, der: 12, gm: 34, gc: 33, sg: 1, ultimas: ["E", "E", "D", "D", "E"], proximo: "cruzeiro", status: "sul_americana" },
+  { pos: 11, clube: "São Paulo", slug: "sao-paulo", pts: 36, pj: 29, vit: 10, e: 6, der: 13, gm: 33, gc: 34, sg: -1, ultimas: ["V", "D", "D", "D", "D"], proximo: "vitoria", status: "sul_americana" },
+  { pos: 12, clube: "Vitória", slug: "vitoria", pts: 36, pj: 29, vit: 10, e: 6, der: 13, gm: 32, gc: 42, sg: -10, ultimas: ["E", "E", "V", "V", "V"], proximo: "sao-paulo", status: "sul_americana" },
+  { pos: 13, clube: "Botafogo", slug: "botafogo", pts: 35, pj: 29, vit: 9, e: 8, der: 12, gm: 42, gc: 47, sg: -5, ultimas: ["D", "E", "D", "D", "D"], proximo: "coritiba", status: "neutro" },
+  { pos: 14, clube: "Vasco da Gama", slug: "vasco", pts: 34, pj: 28, vit: 9, e: 7, der: 12, gm: 36, gc: 42, sg: -6, ultimas: ["V", "V", "V", "V", "V"], proximo: "remo", status: "neutro" },
+  { pos: 15, clube: "Mirassol", slug: "mirassol", pts: 33, pj: 29, vit: 8, e: 9, der: 12, gm: 34, gc: 43, sg: -9, ultimas: ["V", "V", "E", "E", "E"], proximo: "bahia", status: "neutro" },
+  { pos: 16, clube: "Corinthians", slug: "corinthians", pts: 32, pj: 29, vit: 8, e: 8, der: 13, gm: 30, gc: 34, sg: -4, ultimas: ["D", "D", "D", "D", "D"], proximo: "palmeiras", status: "neutro" },
+  { pos: 17, clube: "Internacional", slug: "internacional", pts: 31, pj: 29, vit: 7, e: 10, der: 12, gm: 32, gc: 37, sg: -5, ultimas: ["D", "V", "D", "V", "V"], proximo: "gremio", status: "rebaixamento" },
+  { pos: 18, clube: "Grêmio", slug: "gremio", pts: 30, pj: 29, vit: 7, e: 9, der: 13, gm: 31, gc: 39, sg: -8, ultimas: ["D", "D", "E", "E", "E"], proximo: "internacional", status: "rebaixamento" },
+  { pos: 19, clube: "Remo", slug: "remo", pts: 24, pj: 29, vit: 5, e: 9, der: 15, gm: 33, gc: 48, sg: -15, ultimas: ["D", "D", "D", "E", "E"], proximo: "vasco", status: "rebaixamento" },
+  { pos: 20, clube: "Chapecoense", slug: "chapecoense", pts: 18, pj: 28, vit: 3, e: 9, der: 16, gm: 29, gc: 57, sg: -28, ultimas: ["V", "D", "E", "D", "D"], proximo: "athletico-pr", status: "rebaixamento" }
 ];
 
 // ===== ZONAS (fonte única de cores e textos: tabela, filtros e legenda) =====
