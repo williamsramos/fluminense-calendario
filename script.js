@@ -123,8 +123,8 @@ const listaAtualizadaDeGames = [
   { id: cryptoId(), category: "masculino", comp: "libertadores", round: "Fase de Grupos- Grupo C", round: "Oitavas de Final - Volta" , date: "18/08", team1: "rivadavia", team2: "fluminense", stadium: "Malvinas Argentinas (Mendoza)", time: "21:30", score: "1x1(pen. 4 x 5)" },
   { id: cryptoId(), category: "masculino", comp: "libertadores", round: "Fase de Grupos- Grupo C", round: "Quartas de Final - Ida" , date: "08/09", team1: "fluminense", team2: "platense", stadium: "Maracanã", time: "19:00", score: "2x0" },
   { id: cryptoId(), category: "masculino", comp: "libertadores", round: "Fase de Grupos- Grupo C", round: "Quartas de Final - Volta" , date: "15/09", team1: "platense", team2: "fluminense", stadium: "Ciudad de Vicente López", time: "19:00", score: "2x1" },
-  { id: cryptoId(), category: "masculino", comp: "libertadores", round: "Fase de Grupos- Grupo C", round: "SemiFinal - Ida" , date: "14/10", team1: "fluminense", team2: "palmeiras", stadium: "Maracanã", time: "21:30", score: "x" },
-  { id: cryptoId(), category: "masculino", comp: "libertadores", round: "Fase de Grupos- Grupo C", round: "SemiFinal - Volta" , date: "21/10", team1: "palmeiras", team2: "fluminense", stadium: "Maracanã", time: "21:30", score: "X" },
+  { id: cryptoId(), category: "masculino", comp: "libertadores",  round: "SemiFinal - Ida" , date: "14/10", team1: "fluminense", team2: "palmeiras", stadium: "Maracanã", time: "21:30", score: "1x2" },
+  { id: cryptoId(), category: "masculino", comp: "libertadores",  round: "SemiFinal - Volta" , date: "21/10", team1: "palmeiras", team2: "fluminense", stadium: "Maracanã", time: "21:30", score: "X" },
 
   // MASCULINO — COPA DO BRASIL
   { id: cryptoId(), category: "masculino", comp: "copadobrasil", round: "5ª Fase (Ida)", date: "23/04", team1: "operario-pr", team2: "fluminense", stadium: "Germano Krüger", time: "21:30", score: "0 x 0" },
