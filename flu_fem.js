@@ -85,7 +85,7 @@ const listaAtualizadaDeGamesFeminino = [
   { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "3ª Fase", date: "27/05/26", team1: "fluminense", team2: "minas-brasilia", stadium: "Luso-Brasileiro", time: "19:00", score: "2 x 0" },
   { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Oitavas de final", date: "21/07/26", team1: "fluminense", team2: "cruzeiro", stadium: "Luso-Brasileiro", time: "16:30", score: "2 x 1" },
   { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Ida)", date: "15/10/26", team1: "flamengo", team2: "fluminense", stadium: "Luso-Brasileiro", time: "19:00", score: "1x2" },
-  { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Volta)", date: "22/10/26", team1: "fluminense", team2: "flamengo", stadium: "Luso-Brasileiro", time: "19:00", score: "x" }
+  { id: cryptoId(), category: "feminino", comp: "copa-brasil-fem", round: "Quartas (Volta)", date: "22/10/26", team1: "fluminense", team2: "flamengo", stadium: "Luso-Brasileiro", time: "19:00", score: "1x3" }
 
 
 ]
@@ -147,7 +147,7 @@ const COMPS_FEMININO = [
 const posicoesCompeticao = {
   "todos": "11º",
   "brasileiro_fem": "11º",
-  "copas_fem": "Quartas",
+  "copas_fem": "Eliminada nas Quartas",
   // "estadual_fem": "-",
   "amistoso_fem": "-"
 };
