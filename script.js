@@ -106,7 +106,7 @@ const listaAtualizadaDeGames = [
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "31ª Rodada", date: "18/10", team1: "fluminense", team2: "santos", stadium: "Maracanã", time: "16:00", score: "1x2" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "32ª Rodada", date: "24/10", team1: "chapecoense", team2: "fluminense", stadium: "Arena Condá", time: "19:30", score: "2x1" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "33ª Rodada", date: "28/10", team1: "fluminense", team2: "internacional", stadium: "Maracanã", time: "19:30", score: "2x1" },
-  { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "34ª Rodada", date: "06/11", team1: "vitoria", team2: "fluminense", stadium: "Barradão", time: "20:00", score: "x" },
+  { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "34ª Rodada", date: "06/11", team1: "vitoria", team2: "fluminense", stadium: "Barradão", time: "20:00", score: "0x3" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "35ª Rodada", date: "18/11", team1: "sao-paulo", team2: "fluminense", stadium: "MorumBis", time: "19:30", score: "x" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "36ª Rodada", date: "22/11", team1: "fluminense", team2: "mirassol", stadium: "Maracanã", time: "16:00", score: "x" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "37ª Rodada", date: "29/11", team1: "fluminense", team2: "cruzeiro", stadium: "Maracanã", time: "16:00", score: "x" },

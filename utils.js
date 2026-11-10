@@ -83,42 +83,45 @@ const LocalStorage = {
 // 📊 Classificação da Série A - 2026
 // (o campo "status" é recalculado pela posição; aqui só serve de valor inicial)
 const dadosClassificacao = [
-  { pos: 1, clube: "Flamengo", slug: "flamengo", pts: 73, pj: 33, vit: 22, e: 7, der: 4, gm: 68, gc: 28, sg: 40, ultimas: ["E", "V", "V", "V", "V"], proximo: "gremio", status: "libertadores_fase_grupos" },
-  { pos: 2, clube: "Palmeiras", slug: "palmeiras", pts: 70, pj: 33, vit: 20, e: 10, der: 3, gm: 56, gc: 22, sg: 34, ultimas: ["V", "V", "V", "V", "E"], proximo: "remo", status: "libertadores_fase_grupos" },
-  { pos: 3, clube: "Cruzeiro", slug: "cruzeiro", pts: 57, pj: 33, vit: 17, e: 6, der: 10, gm: 52, gc: 46, sg: 6, ultimas: ["V", "D", "V", "V", "V"], proximo: "bahia", status: "libertadores_fase_grupos" },
-  { pos: 4, clube: "Fluminense", slug: "fluminense", pts: 54, pj: 33, vit: 15, e: 9, der: 9, gm: 52, gc: 42, sg: 10, ultimas: ["V", "D", "D", "D", "V"], proximo: "vitoria", status: "libertadores_fase_grupos" },
-  { pos: 5, clube: "Athletico-PR", slug: "athletico-pr", pts: 54, pj: 33, vit: 15, e: 9, der: 9, gm: 50, gc: 40, sg: 10, ultimas: ["E", "V", "D", "E", "D"], proximo: "vasco", status: "libertadores_fase_grupos" },
-  { pos: 6, clube: "Bahia", slug: "bahia", pts: 53, pj: 33, vit: 14, e: 11, der: 8, gm: 48, gc: 42, sg: 6, ultimas: ["D", "V", "D", "E", "V"], proximo: "cruzeiro", status: "pre_libertadores" },
-  { pos: 7, clube: "Atlético-MG", slug: "atletico-mg", pts: 50, pj: 33, vit: 14, e: 8, der: 11, gm: 44, gc: 39, sg: 5, ultimas: ["E", "V", "V", "D", "D"], proximo: "botafogo", status: "pre_libertadores" },
-  { pos: 8, clube: "Bragantino", slug: "bragantino", pts: 47, pj: 34, vit: 13, e: 8, der: 13, gm: 44, gc: 39, sg: 5, ultimas: ["V", "E", "D", "V", "V"], proximo: "santos", status: "sul_americana" },
-  { pos: 9, clube: "Santos", slug: "santos", pts: 47, pj: 34, vit: 12, e: 11, der: 11, gm: 50, gc: 49, sg: 1, ultimas: ["D", "V", "E", "E", "D"], proximo: "bragantino", status: "sul_americana" },
-  { pos: 10, clube: "São Paulo", slug: "sao-paulo", pts: 43, pj: 33, vit: 12, e: 7, der: 14, gm: 39, gc: 39, sg: 0, ultimas: ["D", "V", "V", "E", "D"], proximo: "corinthians", status: "sul_americana" },
-  { pos: 11, clube: "Coritiba", slug: "coritiba", pts: 42, pj: 33, vit: 11, e: 9, der: 13, gm: 40, gc: 50, sg: -10, ultimas: ["D", "E", "D", "D", "V"], proximo: "internacional", status: "sul_americana" },
-  { pos: 12, clube: "Botafogo", slug: "botafogo", pts: 39, pj: 33, vit: 10, e: 9, der: 14, gm: 45, gc: 53, sg: -8, ultimas: ["D", "E", "V", "D", "D"], proximo: "atletico-mg", status: "sul_americana" },
-  { pos: 13, clube: "Vasco da Gama", slug: "vasco", pts: 38, pj: 32, vit: 10, e: 8, der: 14, gm: 40, gc: 49, sg: -9, ultimas: ["V", "E", "D", "V", "D"], proximo: "athletico-pr", status: "sul_americana" },
-  { pos: 14, clube: "Vitória", slug: "vitoria", pts: 38, pj: 33, vit: 10, e: 8, der: 15, gm: 35, gc: 48, sg: -13, ultimas: ["V", "D", "E", "E", "D"], proximo: "fluminense", status: "neutro" },
-  { pos: 15, clube: "Grêmio", slug: "gremio", pts: 37, pj: 33, vit: 9, e: 10, der: 14, gm: 37, gc: 44, sg: -7, ultimas: ["E", "E", "D", "V", "V"], proximo: "flamengo", status: "neutro" },
-  { pos: 16, clube: "Mirassol", slug: "mirassol", pts: 37, pj: 33, vit: 9, e: 10, der: 14, gm: 37, gc: 47, sg: -10, ultimas: ["E", "D", "V", "E", "D"], proximo: "chapecoense", status: "neutro" },
-  { pos: 17, clube: "Corinthians", slug: "corinthians", pts: 36, pj: 33, vit: 9, e: 9, der: 15, gm: 36, gc: 42, sg: -6, ultimas: ["D", "D", "E", "D", "V"], proximo: "sao-paulo", status: "rebaixamento" },
-  { pos: 18, clube: "Internacional", slug: "internacional", pts: 35, pj: 33, vit: 8, e: 11, der: 14, gm: 37, gc: 42, sg: -5, ultimas: ["V", "E", "D", "V", "D"], proximo: "coritiba", status: "rebaixamento" },
-  { pos: 19, clube: "Remo", slug: "remo", pts: 29, pj: 33, vit: 6, e: 11, der: 16, gm: 36, gc: 51, sg: -15, ultimas: ["E", "E", "E", "D", "V"], proximo: "palmeiras", status: "rebaixamento" },
-  { pos: 20, clube: "Chapecoense", slug: "chapecoense", pts: 21, pj: 32, vit: 4, e: 9, der: 19, gm: 32, gc: 66, sg: -34, ultimas: ["D", "D", "D", "V", "D"], proximo: "mirassol", status: "rebaixamento" }
+{ pos: 1, clube: "Flamengo", slug: "flamengo", pts: 76, pj: 34, vit: 23, e: 7, der: 4, gm: 71, gc: 29, sg: 42, ultimas: ["V", "V", "V", "V", "V"], proximo: "athletico-pr", status: "libertadores_fase_grupos" },
+{ pos: 2, clube: "Palmeiras", slug: "palmeiras", pts: 73, pj: 34, vit: 21, e: 10, der: 3, gm: 62, gc: 23, sg: 39, ultimas: ["V", "V", "V", "E", "V"], proximo: "cruzeiro", status: "libertadores_fase_grupos" },
+{ pos: 3, clube: "Cruzeiro", slug: "cruzeiro", pts: 60, pj: 34, vit: 18, e: 6, der: 10, gm: 55, gc: 48, sg: 7, ultimas: ["D", "V", "V", "V", "V"], proximo: "palmeiras", status: "libertadores_fase_grupos" },
+{ pos: 4, clube: "Fluminense", slug: "fluminense", pts: 57, pj: 34, vit: 16, e: 9, der: 9, gm: 55, gc: 42, sg: 13, ultimas: ["D", "D", "D", "V", "V"], proximo: "sao-paulo", status: "libertadores_fase_grupos" },
+{ pos: 5, clube: "Athletico-PR", slug: "athletico-pr", pts: 54, pj: 34, vit: 15, e: 9, der: 10, gm: 51, gc: 43, sg: 8, ultimas: ["V", "D", "E", "D", "D"], proximo: "flamengo", status: "pre_libertadores" },
+{ pos: 6, clube: "Bahia", slug: "bahia", pts: 53, pj: 34, vit: 14, e: 11, der: 9, gm: 50, gc: 45, sg: 5, ultimas: ["V", "D", "E", "V", "D"], proximo: "gremio", status: "sul_americana" },
+{ pos: 7, clube: "Atlético-MG", slug: "atletico-mg", pts: 50, pj: 34, vit: 14, e: 8, der: 12, gm: 44, gc: 40, sg: 4, ultimas: ["V", "V", "D", "D", "D"], proximo: "mirassol", status: "sul_americana" },
+{ pos: 8, clube: "Bragantino", slug: "bragantino", pts: 47, pj: 34, vit: 13, e: 8, der: 13, gm: 44, gc: 39, sg: 5, ultimas: ["V", "E", "D", "V", "V"], proximo: "vitoria", status: "sul_americana" },
+{ pos: 9, clube: "Santos", slug: "santos", pts: 47, pj: 34, vit: 12, e: 11, der: 11, gm: 50, gc: 49, sg: 1, ultimas: ["D", "V", "E", "E", "D"], proximo: "coritiba", status: "sul_americana" },
+{ pos: 10, clube: "São Paulo", slug: "sao-paulo", pts: 44, pj: 34, vit: 12, e: 8, der: 14, gm: 39, gc: 39, sg: 0, ultimas: ["V", "V", "E", "D", "E"], proximo: "fluminense", status: "sul_americana" },
+{ pos: 11, clube: "Botafogo", slug: "botafogo", pts: 42, pj: 34, vit: 11, e: 9, der: 14, gm: 46, gc: 53, sg: -7, ultimas: ["E", "V", "D", "D", "V"], proximo: "corinthians", status: "neutro" },
+{ pos: 12, clube: "Coritiba", slug: "coritiba", pts: 42, pj: 34, vit: 11, e: 9, der: 14, gm: 40, gc: 51, sg: -11, ultimas: ["E", "D", "D", "V", "D"], proximo: "santos", status: "sul_americana" },
+{ pos: 13, clube: "Vasco da Gama", slug: "vasco", pts: 41, pj: 33, vit: 11, e: 8, der: 14, gm: 43, gc: 50, sg: -7, ultimas: ["E", "D", "V", "D", "V"], proximo: "internacional", status: "neutro" },
+{ pos: 14, clube: "Mirassol", slug: "mirassol", pts: 40, pj: 34, vit: 10, e: 10, der: 14, gm: 39, gc: 48, sg: -9, ultimas: ["V", "E", "D", "V", "V"], proximo: "atletico-mg", status: "neutro" },
+{ pos: 15, clube: "Vitória", slug: "vitoria", pts: 38, pj: 34, vit: 10, e: 8, der: 16, gm: 35, gc: 51, sg: -16, ultimas: ["D", "E", "E", "D", "D"], proximo: "bragantino", status: "neutro" },
+{ pos: 16, clube: "Internacional", slug: "internacional", pts: 38, pj: 34, vit: 9, e: 11, der: 14, gm: 38, gc: 42, sg: -4, ultimas: ["E", "D", "V", "D", "V"], proximo: "vasco", status: "neutro" },
+{ pos: 17, clube: "Corinthians", slug: "corinthians", pts: 37, pj: 34, vit: 9, e: 10, der: 15, gm: 36, gc: 42, sg: -6, ultimas: ["D", "E", "D", "V", "E"], proximo: "botafogo", status: "rebaixamento" },
+{ pos: 18, clube: "Grêmio", slug: "gremio", pts: 37, pj: 34, vit: 9, e: 10, der: 15, gm: 38, gc: 47, sg: -9, ultimas: ["E", "D", "V", "V", "D"], proximo: "bahia", status: "rebaixamento" },
+{ pos: 19, clube: "Remo", slug: "remo", pts: 29, pj: 34, vit: 6, e: 11, der: 17, gm: 37, gc: 57, sg: -20, ultimas: ["E", "E", "D", "V", "D"], proximo: "chapecoense", status: "rebaixamento" },
+{ pos: 20, clube: "Chapecoense", slug: "chapecoense", pts: 21, pj: 33, vit: 4, e: 9, der: 20, gm: 33, gc: 68, sg: -35, ultimas: ["D", "V", "D", "D", "D"], proximo: "remo", status: "rebaixamento" }
 ];
 
 
 // ===== ZONAS (fonte única de cores e textos: tabela, filtros e legenda) =====
 const legendaQualificacaoRebaixamento = {
-  libertadores_fase_grupos: { label: "1º - 4º: Libertadores (G4)", cor: "#234bc5" },
-  pre_libertadores:         { label: "5º: Pré-Libertadores",       cor: "#447eff" },
-  sul_americana:            { label: "6º - 11º: Sul-Americana",    cor: "#358856" },
-  neutro:                   { label: "12º - 16º: Neutro",          cor: "#64748b" },
-  rebaixamento:             { label: "17º - 20º: Rebaixamento",    cor: "#d93829" }
+libertadores_fase_grupos: { label: "1º - 4º: Libertadores (G4)", cor: "#234bc5" },
+pre_libertadores: { label: "5º - 6º: Pré-Libertadores", cor: "#447eff" },
+sul_americana: { label: "7º - 11º: Sul-Americana", cor: "#358856" },
+neutro: { label: "12º - 16º: Neutro", cor: "#64748b" },
+rebaixamento: { label: "17º - 20º: Rebaixamento", cor: "#d93829" }
 };
+
+// Clubes já rebaixados matematicamente (mostram "R" na tabela e na legenda)
+const clubesRebaixados = ["chapecoense"];
 
 // Define a zona pela POSIÇÃO atual (o simulador reordena a tabela)
 function statusPorPosicao(pos) {
   if (pos <= 4) return "libertadores_fase_grupos";
-  if (pos <= 5) return "pre_libertadores";
+  if (pos <= 6) return "pre_libertadores";
   if (pos <= 11) return "sul_americana";
   if (pos <= 16) return "neutro";
   return "rebaixamento";
@@ -130,8 +133,8 @@ let ultimosDadosClassificacao = dadosClassificacao;
 
 const filtrosClassificacao = [
   { id: "libertadores_fase_grupos", label: "Libertadores - G4", faixa: "1º ao 4º" },
-  { id: "pre_libertadores",         label: "Pré-Libertadores",  faixa: "5º" },
-  { id: "sul_americana",            label: "Sul-Americana",     faixa: "6º ao 11º" },
+  { id: "pre_libertadores",         label: "Pré-Libertadores",  faixa: "5º e 6º" },
+  { id: "sul_americana",            label: "Sul-Americana",     faixa: "7º ao 11º" },
   { id: "neutro",                   label: "Neutro",            faixa: "12º ao 16º" },
   { id: "rebaixamento",             label: "Rebaixamento",      faixa: "17º ao 20º" },
   { id: "todos",                    label: "Ver tudo",          faixa: "" }
@@ -246,9 +249,10 @@ function renderizarTabelaClassificacao(dados = dadosClassificacao) {
     const tr = document.createElement("tr");
     tr.className = trClasses.trim();
 
-    tr.innerHTML = `
-      <td class="py-3 px-4"><span class="${posBadgeClass}" style="${posBadgeStyle}">${item.pos}º</span></td>
-      <td class="py-3 px-4 flex items-center gap-2.5 font-medium text-slate-200">
+tr.innerHTML = `
+<td class="py-3 px-4"><span class="${posBadgeClass}" style="${posBadgeStyle}">${item.pos}º</span></td>
+<td class="py-3 px-4 flex items-center gap-2.5 font-medium text-slate-200">
+${clubesRebaixados.includes(item.slug) ? '<span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded border border-[#d93829] bg-[#d93829]/20 text-[#ff6b5e]" title="Rebaixado">R</span>' : ''}
         <img src="${teamData.logo}" alt="Escudo do ${item.clube}" class="w-6 h-6 object-contain shrink-0 drop-shadow" onerror="this.onerror=null; this.src='img/default.png';">
         <span class="${isfluminense ? 'text-white font-black tracking-wide' : ''}">${item.clube}</span>
         ${isfluminense ? '<span class="ml-1 text-[10px] bg-gold/20 text-gold border border-gold/40 px-1.5 py-0.5 rounded font-extrabold uppercase tracking-wider">tricolor</span>' : ''}
@@ -281,21 +285,26 @@ function renderizarTabelaClassificacao(dados = dadosClassificacao) {
 }
 
 function renderizarLegendaClassificacao() {
-  const containerTabela = document.getElementById("tabela-corpo")?.closest('.overflow-x-auto') || document.getElementById("tabela-corpo")?.parentElement;
-  if (!containerTabela || document.getElementById("legenda-classificacao")) return;
+const containerTabela = document.getElementById("tabela-corpo")?.closest('.overflow-x-auto') || document.getElementById("tabela-corpo")?.parentElement;
 
-  // Legenda gerada do mesmo objeto que define as cores da tabela
-  const itens = Object.values(legendaQualificacaoRebaixamento).map(l => `
-    <div class="flex items-center gap-2">
-      <span class="w-3.5 h-3.5 rounded inline-block" style="background:${l.cor}"></span>
-      <span>${l.label}</span>
-    </div>`).join("");
+if (!containerTabela || document.getElementById("legenda-classificacao")) return;
 
-  const legendaHTML = `
-    <div id="legenda-classificacao" class="mt-6 p-4 bg-navy-900 border border-navy-800 rounded-xl flex flex-wrap gap-4 text-xs font-medium justify-between items-center text-slate-300">
-      ${itens}
-    </div>
-  `;
+// Legenda gerada a partir do mesmo objeto que define as cores da tabela
+const itens = Object.values(legendaQualificacaoRebaixamento).map(l => `
+<div class="flex items-center gap-2">
+<span class="w-3.5 h-3.5 rounded inline-block" style="background:${l.cor}"></span>
+<span>${l.label}</span>
+</div>`).join("");
+
+const itemRebaixado = clubesRebaixados.length
+? `<div class="flex items-center gap-2"><span class="font-extrabold text-[#ff6b5e]">R</span><span>- Rebaixado</span></div>`
+: "";
+
+const legendaHTML = `
+<div id="legenda-classificacao" class="mt-6 p-4 bg-navy-900 border border-navy-800 rounded-xl flex flex-wrap gap-4 text-xs font-medium justify-between items-center text-slate-300">
+${itens}${itemRebaixado}
+</div>
+`;
   containerTabela.insertAdjacentHTML('afterend', legendaHTML);
 }
 
