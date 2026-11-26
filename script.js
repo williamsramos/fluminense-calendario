@@ -108,7 +108,7 @@ const listaAtualizadaDeGames = [
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "33ª Rodada", date: "28/10", team1: "fluminense", team2: "internacional", stadium: "Maracanã", time: "19:30", score: "2x1" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "34ª Rodada", date: "06/11", team1: "vitoria", team2: "fluminense", stadium: "Barradão", time: "20:00", score: "0x3" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "35ª Rodada", date: "18/11", team1: "sao-paulo", team2: "fluminense", stadium: "MorumBis", time: "19:30", score: "0x1" },
-  { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "36ª Rodada", date: "22/11", team1: "fluminense", team2: "mirassol", stadium: "Maracanã", time: "16:00", score: "x" },
+  { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "36ª Rodada", date: "22/11", team1: "fluminense", team2: "mirassol", stadium: "Maracanã", time: "16:00", score: "1x0" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "37ª Rodada", date: "29/11", team1: "fluminense", team2: "cruzeiro", stadium: "Maracanã", time: "16:00", score: "x" },
   { id: cryptoId(), category: "masculino", comp: "brasileiro", round: "38ª Rodada", date: "02/12", team1: "bragantino", team2: "fluminense", stadium: "Estádio Municipal Cícero de Souza Marques", time: "21:30", score: "x" },
 
